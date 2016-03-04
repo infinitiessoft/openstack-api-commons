@@ -1,0 +1,2 @@
+export token:
+export TOKEN=`curl -si -d '{ "auth": {"identity": {"methods": ["password"],"password": {"user": {"domain":{"id":"default"},"name": "admin","password": "crowbar" } } } } }' -H "Content-type: application/json" http://192.168.0.96:5000/v3/auth/tokens | awk '/X-Subject-Token/ {print $2}'`

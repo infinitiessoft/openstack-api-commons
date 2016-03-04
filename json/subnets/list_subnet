@@ -1,0 +1,13 @@
+request :
+curl -si -H "X-Auth-Token: $TOKEN" -X GET -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/subnets
+
+response : 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Content-Length: 1745
+X-Openstack-Request-Id: req-7165b9d7-78f1-4aef-8d22-0b2f35c6efe6
+Date: Tue, 01 Mar 2016 06:04:15 GMT
+
+{"subnets": [{"name": "fixed", "enable_dhcp": true, "network_id": "a4ba3da6-de73-48ca-a15d-818313eb47bb", "tenant_id": "fa9ca25e4a254acb82c40a70a59d51cf", "dns_nameservers": [], "gateway_ip": "192.168.123.1", "ipv6_ra_mode": null, "allocation_pools": [{"start": "192.168.123.2", "end": "192.168.123.254"}], "host_routes": [], "ip_version": 4, "ipv6_address_mode": null, "cidr": "192.168.123.0/24", "id": "99475cad-433a-4c54-b17e-dcadfd16be84"}, {"name": "floating", "enable_dhcp": false, "network_id": "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "tenant_id": "fa9ca25e4a254acb82c40a70a59d51cf", "dns_nameservers": [], "gateway_ip": "192.168.126.1", "ipv6_ra_mode": null, "allocation_pools": [{"start": "192.168.126.129", "end": "192.168.126.254"}], "host_routes": [], "ip_version": 4, "ipv6_address_mode": null, "cidr": "192.168.126.0/24", "id": "a6b43d24-8d83-4236-8242-66e83fceabe4"}, {"name": "net1", "enable_dhcp": true, "network_id": "184f1455-f965-413b-bbb7-6d05d1a57cba", "tenant_id": "331f2f031edb4ee78e7f983f969f8bae", "dns_nameservers": [], "gateway_ip": "192.168.123.1", "ipv6_ra_mode": null, "allocation_pools": [{"start": "192.168.123.2", "end": "192.168.123.254"}], "host_routes": [], "ip_version": 4, "ipv6_address_mode": null, "cidr": "192.168.123.0/24", "id": "bb1c77aa-c61b-4385-a774-17b161ce69f3"}, {"name": "net2", "enable_dhcp": true, "network_id": "d970d95a-58fb-497a-820c-ee71d4e90da7", "tenant_id": "331f2f031edb4ee78e7f983f969f8bae", "dns_nameservers": [], "gateway_ip": "192.168.123.1", "ipv6_ra_mode": null, "allocation_pools": [{"start": "192.168.123.2", "end": "192.168.123.254"}], "host_routes": [], "ip_version": 4, "ipv6_address_mode": null, "cidr": "192.168.123.0/24", "id": "a5aeb5ab-5a39-40c3-b7be-c141f95a303e"}]}
+
+curl -H "X-Auth-Token:1:admin" http://localhost:9999/v2/1/subnets

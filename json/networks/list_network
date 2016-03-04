@@ -1,0 +1,13 @@
+request :
+curl -si -H "X-Auth-Token: $TOKEN" -X GET -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/networks
+
+response :
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Content-Length: 2102
+X-Openstack-Request-Id: req-6f2e7b2c-1c69-42ba-9f83-71dcb83d1a67
+Date: Sat, 27 Feb 2016 15:24:42 GMT
+
+{"networks": [{"status": "ACTIVE", "subnets": ["a6b43d24-8d83-4236-8242-66e83fceabe4"], "name": "floating", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "fa9ca25e4a254acb82c40a70a59d51cf", "provider:network_type": "vlan", "router:external": true, "shared": true, "id": "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "provider:segmentation_id": 300}, {"status": "ACTIVE", "subnets": [], "name": "testNK", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "7fb44a8ffc6e419497d94b8b2c13fee5", "provider:network_type": "vlan", "router:external": false, "shared": false, "id": "c773f05e-f0d1-4bb7-b43c-cb0359a06386", "provider:segmentation_id": 505}, {"status": "ACTIVE", "subnets": [], "name": "test", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "0d284d59ec704b1690d70c773c4e16bc", "provider:network_type": "vlan", "router:external": false, "shared": false, "id": "d799c671-876e-4ce1-9d7f-c1b2c2682112", "provider:segmentation_id": 504}, {"status": "ACTIVE", "subnets": ["a5aeb5ab-5a39-40c3-b7be-c141f95a303e"], "name": "net2", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "331f2f031edb4ee78e7f983f969f8bae", "provider:network_type": "vlan", "router:external": false, "shared": false, "id": "d970d95a-58fb-497a-820c-ee71d4e90da7", "provider:segmentation_id": 502}, {"status": "ACTIVE", "subnets": ["99475cad-433a-4c54-b17e-dcadfd16be84"], "name": "fixed", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "fa9ca25e4a254acb82c40a70a59d51cf", "provider:network_type": "vlan", "router:external": false, "shared": true, "id": "a4ba3da6-de73-48ca-a15d-818313eb47bb", "provider:segmentation_id": 500}, {"status": "ACTIVE", "subnets": ["bb1c77aa-c61b-4385-a774-17b161ce69f3"], "name": "net1", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "331f2f031edb4ee78e7f983f969f8bae", "provider:network_type": "vlan", "router:external": false, "shared": false, "id": "184f1455-f965-413b-bbb7-6d05d1a57cba", "provider:segmentation_id": 501}]}
+
+curl -H "X-Auth-Token:1:admin" http://localhost:9999/v2/1/networks

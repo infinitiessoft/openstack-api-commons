@@ -1,0 +1,11 @@
+request :
+curl -si -H "X-Auth-Token: $TOKEN" -X GET -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/ports/c442ad8a-b7ba-4bf9-8eed-37b88cfc5243
+
+response : 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Content-Length: 724
+X-Openstack-Request-Id: req-ef00f691-ae19-4257-bac0-512cdd145526
+Date: Tue, 01 Mar 2016 09:06:10 GMT
+
+{"port": {"status": "ACTIVE", "binding:host_id": "d00-0c-29-02-45-a8", "allowed_address_pairs": [], "extra_dhcp_opts": [], "device_owner": "network:dhcp", "binding:profile": {}, "fixed_ips": [{"subnet_id": "a5aeb5ab-5a39-40c3-b7be-c141f95a303e", "ip_address": "192.168.123.2"}], "id": "c442ad8a-b7ba-4bf9-8eed-37b88cfc5243", "security_groups": [], "device_id": "dhcp8a3951a4-5407-50d8-98e6-b25f396ee37c-d970d95a-58fb-497a-820c-ee71d4e90da7", "name": "", "admin_state_up": true, "network_id": "d970d95a-58fb-497a-820c-ee71d4e90da7", "tenant_id": "331f2f031edb4ee78e7f983f969f8bae", "binding:vif_details": {"port_filter": true}, "binding:vnic_type": "normal", "binding:vif_type": "bridge", "mac_address": "fa:16:3e:fc:72:06"}}

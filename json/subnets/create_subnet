@@ -1,0 +1,13 @@
+request :
+curl -si -H"X-Auth-Token:$TOKEN" -X POST -d '{"subnet" :{"network_id" : "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "ip_version" : 4, "cidr" : "192.168.199.0/24"}}' -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/subnets
+
+respone : 
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=UTF-8
+Content-Length: 437
+X-Openstack-Request-Id: req-17761dfb-e59e-4f2b-a912-cd6955649143
+Date: Tue, 01 Mar 2016 03:32:36 GMT
+
+{"subnet": {"name": "", "enable_dhcp": true, "network_id": "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "tenant_id": "0d284d59ec704b1690d70c773c4e16bc", "dns_nameservers": [], "gateway_ip": "192.168.199.1", "ipv6_ra_mode": null, "allocation_pools": [{"start": "192.168.199.2", "end": "192.168.199.254"}], "host_routes": [], "ip_version": 4, "ipv6_address_mode": null, "cidr": "192.168.199.0/24", "id": "f61e571f-057c-4a3b-9632-b278238c628e"}}
+
+curl -H "X-Auth-Token:1:admin" -H "Content-Type:application/json" -X POST -d '{"subnet" : {"network_id" : "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "ip_version":4, "cidr" : "192.168.198.0/24", "name":"testCreate"}}' http://localhost:9999/v2/1/subnets

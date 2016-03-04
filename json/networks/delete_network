@@ -1,0 +1,10 @@
+request :
+curl -si -H "X-Auth-Token: $TOKEN" -X DELETE -H "Content-type:application/json" http://192.168.0.96:9696/v2.0/networks/c773f05e-f0d1-4bb7-b43c-cb0359a06386
+
+response :
+HTTP/1.1 204 No Content
+Content-Length: 0
+X-Openstack-Request-Id: req-7800a756-0fe9-48c3-9904-5948bbd41123
+Date: Tue, 01 Mar 2016 06:17:51 GMT
+
+curl -H "X-Auth-Token:1:admin" -H "Content-Type:application/json" -X DELETE http://localhost:9999/v2/1/networks/c773f05e-f0d1-4bb7-b43c-cb0359a06386

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<INSTANCE_TYPE id="1" deleted="0" optlock="1" disabled="false"
+		EPHEMERAL_GB="0" FLAVORID="1" IS_PUBLIC="true" MEMORY_MB="512" name="m1.tiny"
+		ROOT_GB="1" RXTX_FACTOR="1" SWAP="0" VCPUS="1" />
+	<INSTANCE_TYPE id="2" deleted="0" optlock="1" disabled="false"
+		EPHEMERAL_GB="0" FLAVORID="2" IS_PUBLIC="true" MEMORY_MB="2048" name="m1.small"
+		ROOT_GB="20" RXTX_FACTOR="1" SWAP="0" VCPUS="1" />
+	<INSTANCE_TYPE id="3" deleted="0" optlock="1" disabled="false"
+		EPHEMERAL_GB="0" FLAVORID="3" IS_PUBLIC="true" MEMORY_MB="4096" name="m1.medium"
+		ROOT_GB="40" RXTX_FACTOR="1" SWAP="0" VCPUS="2" />
+	<INSTANCE_TYPE id="4" deleted="0" optlock="1" disabled="false"
+		EPHEMERAL_GB="0" FLAVORID="4" IS_PUBLIC="true" MEMORY_MB="8192" name="m1.large"
+		ROOT_GB="80" RXTX_FACTOR="1" SWAP="0" VCPUS="4" />
+	<INSTANCE_TYPE id="5" deleted="0" optlock="1" disabled="false"
+		EPHEMERAL_GB="0" FLAVORID="5" IS_PUBLIC="true" MEMORY_MB="16384" name="m1.xlarge"
+		ROOT_GB="160" RXTX_FACTOR="1" SWAP="0" VCPUS="8" />
+	<IMAGES id="1bea47ed-f6a9-463b-b423-14b9cca9ad27" deleted="0"
+		optlock="1" IMAGE_ID="afab0f79bac770d61d24b4d0560b5f70" PROGRESS="50"
+		MIN_DISK="0" MIN_RAM="0" name="cirros-0.3.2-x86_64-disk" size="13167616"
+		status="active" created_at="2014-05-05 17:15:16" updated_at="2014-05-05 17:15:16" />
+	<IMAGES id="781b3762-9469-4cec-b58d-3349e5de4e9c" deleted="0"
+		optlock="1" IMAGE_ID="c2e5db72bd7fd153f53ede5da5a06de3" PROGRESS="100"
+		MIN_DISK="5" MIN_RAM="256" name="Ubuntu 10.04 Plain 5GB" size="5368709120"
+		status="active" created_at="2014-05-05 17:15:16" updated_at="2014-05-05 17:15:16" />
+	<IMAGE_METADATA METADATA_KEY="test" METADATA_ID="val"
+		IMAGE_ID="781b3762-9469-4cec-b58d-3349e5de4e9c" />
+	<IMAGE_METADATA METADATA_KEY="test2" METADATA_ID="val2"
+		IMAGE_ID="781b3762-9469-4cec-b58d-3349e5de4e9c" />
+	<INSTANCES id="2bea47ed-f6a9-463b-b423-14b9cca9ad27"
+		created_at="2014-05-05 17:15:16" deleted="0" updated_at="2014-05-05 17:15:16"
+		OPTLOCK="1" ACCESS_IP_V4="127.0.0.1" ADMIN_PASS="secret"
+		AVAILABILITY_ZONE="nova" CONFIG_DRIVE="" DISK_CONFIG="AUTO" FLAVOR_ID="2"
+		HOST="d00-0c-29-4e-46-13" HOST_ID="c23c63c2a8e9d321756948e002609e906914a36dd1f990d1680a7240"
+		HYPERVISOR_HOSTNAME="d00-0c-29-4e-46-13.cloud.default.net" IMAGE_ID="afab0f79bac770d61d24b4d0560b5f70"
+		INSTANCE_ID="7b500017-5080-4fa0-b204-50e60d47e0db" INSTANCE_NAME="instance1"
+		LAUNCHED_AT="2015-09-10 22:33:15" NAME="vm1" POWER_STATE="1" PROGRESS="0"
+		STATUS="ACTIVE" TENANT_ID="b9f9b280583e4695bdc01818378d2491" USER_ID="8f44122d22b44017ba55273efe3a24f7"
+		VM_STATE="active" />
+	<INSTANCES id="2bea47ed-f6a9-463b-b423-14b9cca9ad28"
+		created_at="2014-05-05 17:15:16" deleted="0" updated_at="2014-05-05 17:15:16"
+		OPTLOCK="1" ACCESS_IP_V4="127.0.0.1" ADMIN_PASS="secret"
+		AVAILABILITY_ZONE="nova" CONFIG_DRIVE="" DISK_CONFIG="AUTO" FLAVOR_ID="5"
+		HOST="d00-0c-29-4e-46-13" HOST_ID="c23c63c2a8e9d321756948e002609e906914a36dd1f990d1680a7240"
+		HYPERVISOR_HOSTNAME="d00-0c-29-4e-46-13.cloud.default.net" IMAGE_ID="c2e5db72bd7fd153f53ede5da5a06de3"
+		INSTANCE_ID="7b500017-5080-4fa0-b204-50e60d47e0da" INSTANCE_NAME="instance2"
+		LAUNCHED_AT="2015-09-10 22:33:15" NAME="vm2" POWER_STATE="1" PROGRESS="0"
+		STATUS="ACTIVE" TENANT_ID="b9f9b280583e4695bdc01818378d2491" USER_ID="8f44122d22b44017ba55273efe3a24f7"
+		VM_STATE="active" />
+	<INSTANCE_METADATA METADATA_KEY="test" METADATA_ID="val"
+		INSTANCE_ID="2bea47ed-f6a9-463b-b423-14b9cca9ad27" />
+	<INSTANCE_METADATA METADATA_KEY="test2" METADATA_ID="val2"
+		INSTANCE_ID="2bea47ed-f6a9-463b-b423-14b9cca9ad27" />
+	<!-- <IMAGES id="781b3762-9469-4cec-b58d-3349e5de4e9c" deleted="0" optlock="1" 
+		CHECKSUM="c2e5db72bd7fd153f53ede5da5a06de3" CONTAINER_FORMAT="ovf" DISK_FORMAT="vhd" 
+		IS_PUBLIC="true" MIN_DISK="5" MIN_RAM="256" name="Ubuntu 10.04 Plain 5GB" 
+		PROTECTED="false" size="5368709120" status="active" created_at="2014-05-05 
+		17:15:16" updated_at="2014-05-05 17:15:16" /> <IMAGES id="781b3762-9469-4cec-b58d-3349e5de4e9d" 
+		deleted="0" optlock="1" CHECKSUM="afab0f79bac770d61d24b4d0560b5f70" CONTAINER_FORMAT="bare" 
+		DISK_FORMAT="qcow2" IS_PUBLIC="false" MIN_DISK="0" MIN_RAM="0" name="F17-x86_64-cfntools" 
+		OWNER="5ef70662f8b34079a6eddb8da9d75fe8" PROTECTED="false" size="476704768" 
+		status="active" created_at="2014-05-05 17:15:16" updated_at="2014-05-05 17:15:16" 
+		/> <IMAGES id="781b3762-9469-4cec-b58d-3349e5de4e2d" deleted="0" optlock="1" 
+		CHECKSUM="afab0f79bac770d61d24b4d0560b5f10" CONTAINER_FORMAT="bare" DISK_FORMAT="qcow2" 
+		IS_PUBLIC="false" MIN_DISK="0" MIN_RAM="0" name="F18-x86_64-cfntools" OWNER="5ef70662f8b34079a6eddb8da9d75fe2" 
+		PROTECTED="false" size="476704768" status="active" created_at="2014-05-05 
+		17:15:16" updated_at="2014-05-05 17:15:16" /> <IMAGES id="681b3762-9469-4cec-b58d-3349e5de4e2d" 
+		deleted="1" optlock="1" CHECKSUM="bfab0f79bac770d61d24b4d0560b5f10" CONTAINER_FORMAT="bare" 
+		DISK_FORMAT="qcow2" IS_PUBLIC="true" MIN_DISK="0" MIN_RAM="0" name="F19-x86_64-cfntools" 
+		OWNER="5ef70662f8b34079a6eddb8da9d75fe8" PROTECTED="false" size="476704768" 
+		status="active" created_at="2014-05-05 17:15:16" updated_at="2014-05-05 17:15:16" 
+		/> <IMAGE_PROPERTIES id="1" deleted="0" optlock="1" created_at="2014-05-05 
+		17:15:16" updated_at="2014-05-05 17:15:16" name="test" val="val" IMAGE_ID="1bea47ed-f6a9-463b-b423-14b9cca9ad27" 
+		/> <IMAGE_PROPERTIES id="2" deleted="0" optlock="1" created_at="2014-05-05 
+		17:15:16" updated_at="2014-05-05 17:15:16" name="test2" val="val2" IMAGE_ID="1bea47ed-f6a9-463b-b423-14b9cca9ad27" 
+		/> -->
+</dataset>

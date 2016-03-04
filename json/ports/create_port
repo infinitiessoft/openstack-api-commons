@@ -1,0 +1,14 @@
+request :
+curl -si -H"X-Auth-Token:$TOKEN" -X POST -d '{"port" :{"network_id" : "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4"}}' -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/ports
+
+response :
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=UTF-8
+Content-Length: 614
+X-Openstack-Request-Id: req-d6eba8e0-4456-4f01-815f-0ad372db3ce1
+Date: Tue, 01 Mar 2016 09:20:23 GMT
+
+{"port": {"status": "DOWN", "binding:host_id": "", "allowed_address_pairs": [], "device_owner": "", "binding:profile": {}, "fixed_ips": [{"subnet_id": "a6b43d24-8d83-4236-8242-66e83fceabe4", "ip_address": "192.168.126.185"}], "id": "4322a317-3606-4bad-b768-5b687f909c2c", "security_groups": ["53cce721-9b67-48e2-87df-1cdd773b0681"], "device_id": "", "name": "", "admin_state_up": true, "network_id": "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "tenant_id": "0d284d59ec704b1690d70c773c4e16bc", "binding:vif_details": {}, "binding:vnic_type": "normal", "binding:vif_type": "unbound", "mac_address": "fa:16:3e:17:fe:50"}}
+
+
+curl -H "X-Auth-Token:1:admin" -H "Content-Type:application/json" -X POST -d '{"port" : {"network_id" : "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4"}}' http://localhost:9999/v2/1/ports

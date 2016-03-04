@@ -1,0 +1,12 @@
+curl -si -H"X-Auth-Token:$TOKEN" -X POST -d '{"network" :{"name" : "test"}}' -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/networks
+
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=UTF-8
+Content-Length: 333
+X-Openstack-Request-Id: req-b738f814-d31e-4747-9b3f-fae5864e513d
+Date: Fri, 26 Feb 2016 15:37:19 GMT
+
+{"network": {"status": "ACTIVE", "subnets": [], "name": "test", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "0d284d59ec704b1690d70c773c4e16bc", "provider:network_type": "vlan", "router:external": false, "shared": false, "id": "d799c671-876e-4ce1-9d7f-c1b2c2682112", "provider:segmentation_id": 504}
+
+
+curl -H "X-Auth-Token:1:admin" -H "Content-Type:application/json" -X POST -d '{"name" : "testNK"}' http://localhost:9999/v2/1/networks

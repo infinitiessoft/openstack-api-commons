@@ -1,0 +1,11 @@
+request :
+curl -si -H "X-Auth-Token: $TOKEN" -X GET -H "Content-type: application/json" http://192.168.0.96:9696/v2.0/networks/ce31c600-7f4c-45f7-8e3b-1b237e52eaa4
+
+response :
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Content-Length: 373
+X-Openstack-Request-Id: req-501fe6da-1f13-4dba-a3fc-281b434aab52
+Date: Sat, 27 Feb 2016 15:42:18 GMT
+
+{"network": {"status": "ACTIVE", "subnets": ["a6b43d24-8d83-4236-8242-66e83fceabe4"], "name": "floating", "provider:physical_network": "physnet1", "admin_state_up": true, "tenant_id": "fa9ca25e4a254acb82c40a70a59d51cf", "provider:network_type": "vlan", "router:external": true, "shared": true, "id": "ce31c600-7f4c-45f7-8e3b-1b237e52eaa4", "provider:segmentation_id": 300}}
