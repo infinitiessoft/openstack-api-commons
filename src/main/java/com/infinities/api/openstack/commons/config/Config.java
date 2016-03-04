@@ -94,6 +94,7 @@ public class Config {
 
 	public URL getURL(String filePath) {
 		File file = new File(filePath);
+		logger.debug("Config file path:{}", file.getAbsolutePath());
 		try {
 			return file.toURI().toURL();
 		} catch (MalformedURLException e) {

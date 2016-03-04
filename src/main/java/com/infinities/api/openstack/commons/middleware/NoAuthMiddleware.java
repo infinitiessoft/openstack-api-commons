@@ -28,6 +28,7 @@ import javax.ws.rs.ext.Provider;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.common.base.Joiner;
@@ -47,6 +48,7 @@ public class NoAuthMiddleware extends Middleware {
 	private boolean useForwardedFor;
 
 
+	@Autowired
 	public NoAuthMiddleware(Config config) {
 		useForwardedFor = config.getOpt("use_forwarded_for").asBoolean();
 	}
