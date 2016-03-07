@@ -35,19 +35,17 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
-import com.infinities.api.openstack.commons.config.Config;
 import com.infinities.api.openstack.commons.context.OpenstackRequestContext;
 import com.infinities.api.openstack.commons.model.Link;
 
 public abstract class AbstractViewBuilder {
 
 	private final static Logger logger = LoggerFactory.getLogger(AbstractViewBuilder.class);
+	protected String osapiComputeLinkPrefix;
 
-	private Config config;
 
-
-	public AbstractViewBuilder(Config config) {
-		this.config = config;
+	public AbstractViewBuilder(String osapiComputeLinkPrefix) {
+		this.osapiComputeLinkPrefix = osapiComputeLinkPrefix;
 	}
 
 	protected List<Link> getLinks(ContainerRequestContext request, String identifier, String collectionName)
@@ -111,8 +109,9 @@ public abstract class AbstractViewBuilder {
 		return "";
 	}
 
+	// config.getOpt("osapi_compute_link_prefix").asText()
 	protected URI updateComputeLinkPrefix(URI applicationUrl) throws URISyntaxException {
-		return updateLinkPrefix(applicationUrl, config.getOpt("osapi_compute_link_prefix").asText());
+		return updateLinkPrefix(applicationUrl, osapiComputeLinkPrefix);
 	}
 
 	private URI updateLinkPrefix(URI origUrl, String prefix) throws URISyntaxException {
