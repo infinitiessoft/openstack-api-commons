@@ -17,6 +17,9 @@ package com.infinities.api.openstack.commons.config;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -29,6 +32,12 @@ public class FileScanner {
 
 	private final static Logger logger = LoggerFactory.getLogger(FileScanner.class);
 	private final URL url;
+	private final static Map<String, String> replaceMap;
+	static {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("<None>", "");
+		replaceMap = Collections.unmodifiableMap(map);
+	}
 
 
 	public FileScanner(URL url) {
@@ -50,7 +59,11 @@ public class FileScanner {
 					}
 					String[] split = line.split("=", 2);
 					if (split.length == 2) {
-						table.put(type, split[0].trim(), split[1].trim());
+						String value = split[1].trim();
+						if (replaceMap.containsKey(split[1].trim())) {
+							value = replaceMap.get(value);
+						}
+						table.put(type, split[0].trim(), value);
 					}
 				}
 			}

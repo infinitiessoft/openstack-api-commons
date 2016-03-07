@@ -16,17 +16,28 @@
 package com.infinities.api.openstack.commons.config;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
 
-public abstract class Option {
+public class Option {
 
+	private final boolean secret;
 	private final String name;
 	private String value;
 
 
-	public Option(String name, String value) {
+	public Option(String name, boolean secret, String value) {
 		this.name = name;
 		this.value = value;
+		this.secret = secret;
+	}
+
+	public boolean isSecret() {
+		return secret;
+	}
+
+	public void resetValue(String value) {
+		setValue(value);
 	}
 
 	public String getName() {
@@ -46,15 +57,18 @@ public abstract class Option {
 	}
 
 	public int asInteger() {
-		throw new IllegalArgumentException("value is not an integer");
+		return Integer.parseInt(value);
 	}
 
 	public boolean asBoolean() {
-		throw new IllegalArgumentException("value is not a boolean");
+		return Boolean.parseBoolean(value);
 	}
 
 	public List<String> asList() {
-		throw new IllegalArgumentException("value is not a list");
+		String regex = ",";
+		value = offBucket(value);
+		List<String> listValue = Arrays.asList(value.split(regex));
+		return listValue;
 	}
 
 	public URI asURI() {
@@ -64,8 +78,6 @@ public abstract class Option {
 	public String getDest() {
 		return name.replace('-', '_');
 	}
-
-	public abstract void resetValue(String value);
 
 	@Override
 	public int hashCode() {
@@ -96,6 +108,16 @@ public abstract class Option {
 		} else if (!value.equals(other.value))
 			return false;
 		return true;
+	}
+
+	private String offBucket(String value) {
+		if (value.length() < 2) {
+			throw new IllegalArgumentException(value + " length < 2.");
+		}
+		if (value.charAt(0) != '[' || value.charAt(value.length() - 1) != ']') {
+			throw new IllegalArgumentException(value + " is not a list.");
+		}
+		return value.substring(1, value.length() - 1).trim();
 	}
 
 }

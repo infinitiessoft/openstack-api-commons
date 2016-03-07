@@ -43,14 +43,14 @@ public class Config {
 
 	private void preSetup() {
 		// use keystone or not
-		OPTIONS.put("DEFAULT", "auth_strategy", Options.newStrOpt("auth_strategy", "keystone"));
-		OPTIONS.put("DEFAULT", "use_forwarded_for", Options.newBoolOpt("use_forwarded_for", false));
+		OPTIONS.put("DEFAULT", "auth_strategy", Options.newOpt("auth_strategy", "keystone"));
+		OPTIONS.put("DEFAULT", "use_forwarded_for", Options.newOpt("use_forwarded_for", false));
 		// nova.openstack.common.policy
-		OPTIONS.put("DEFAULT", "policy_file", Options.newStrOpt("policy_file", "policy.json"));
-		OPTIONS.put("DEFAULT", "policy_default_rule", Options.newStrOpt("policy_default_rule", "default"));
+		OPTIONS.put("DEFAULT", "policy_file", Options.newOpt("policy_file", "policy.json"));
+		OPTIONS.put("DEFAULT", "policy_default_rule", Options.newOpt("policy_default_rule", "default"));
 		// nova.api.sizelimit
-		OPTIONS.put("DEFAULT", "osapi_max_request_body_size", Options.newIntOpt("osapi_max_request_body_size", 114688));
-		OPTIONS.put("DEFAULT", "fatal_exception_format_errors", Options.newBoolOpt("fatal_exception_format_errors", false));
+		OPTIONS.put("DEFAULT", "osapi_max_request_body_size", Options.newOpt("osapi_max_request_body_size", 114688));
+		OPTIONS.put("DEFAULT", "fatal_exception_format_errors", Options.newOpt("fatal_exception_format_errors", false));
 	}
 
 	private void parseConfigFiles(String path) throws IOException {
@@ -62,30 +62,28 @@ public class Config {
 						new Object[] { cell.getRowKey(), cell.getColumnKey(), cell.getValue() });
 				OPTIONS.get(cell.getRowKey(), cell.getColumnKey()).resetValue(cell.getValue());
 			} else {
-				OPTIONS.put(cell.getRowKey(), cell.getColumnKey(), Options.newStrOpt(cell.getValue()));
+				logger.debug("put FILE_OPTIONS {}.{} = {}",
+						new Object[] { cell.getRowKey(), cell.getColumnKey(), cell.getValue() });
+				OPTIONS.put(cell.getRowKey(), cell.getColumnKey(), Options.newOpt(cell.getColumnKey(), cell.getValue()));
 			}
 		}
 	}
 
 	public Option getOpt(String type, String attr) {
 		Option option = OPTIONS.get(type, attr);
-		if (option instanceof StringOption) {
-			Option newOption = Options.newStrOpt(option.getName(), option.getValue());
-			Matcher matcher = pattern.matcher(option.asText());
-			while (matcher.find()) {
-				String match = matcher.group(1);
+		Option newOption = Options.newOpt(option.getName(), option.getValue());
+		Matcher matcher = pattern.matcher(option.asText());
+		while (matcher.find()) {
+			String match = matcher.group(1);
 
-				logger.debug("sub-option pattern match: {}", match);
-				Option suboption = OPTIONS.get(type, match);
-				if (suboption != null) {
-					String newValue = matcher.replaceFirst(suboption.getValue());
-					newOption.setValue(newValue);
-				}
+			logger.debug("sub-option pattern match: {}", match);
+			Option suboption = OPTIONS.get(type, match);
+			if (suboption != null) {
+				String newValue = matcher.replaceFirst(suboption.getValue());
+				newOption.setValue(newValue);
 			}
-			return newOption;
-		} else {
-			return option;
 		}
+		return newOption;
 	}
 
 	public Option getOpt(String attr) {

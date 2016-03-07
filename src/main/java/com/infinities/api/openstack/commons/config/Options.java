@@ -17,33 +17,31 @@ package com.infinities.api.openstack.commons.config;
 
 import java.util.List;
 
-
 public class Options {
 
-	public static Option newStrOpt(String name, boolean secret, String defaultVal) {
-		return new StringOption(name, secret, defaultVal);
+	public static Option newOpt(String name, boolean secret, String defaultVal) {
+		return new Option(name, secret, defaultVal);
 	}
 
-	public static Option newStrOpt(String name, String defaultVal) {
-		return new StringOption(name, false, defaultVal);
+	public static Option newOpt(String name, String defaultVal) {
+		return new Option(name, false, defaultVal);
 	}
 
-	public static Option newStrOpt(String name) {
-		return new StringOption(name, false, "");
+	// public static Option newOpt(String name) {
+	// return new Option(name, false, "");
+	// }
+
+	public static Option newOpt(String name, int defaultValue) {
+		return newOpt(name, String.valueOf(defaultValue));
 	}
 
-	public static Option newIntOpt(String name, int defaultValue) {
-		return new IntegerOption(name, defaultValue);
+	public static Option newOpt(String name, boolean defaultValue) {
+		return newOpt(name, String.valueOf(defaultValue));
 	}
 
-	public static Option newBoolOpt(String name, boolean defaultValue) {
-		return new BooleanOption(name, defaultValue);
+	public static Option newOpt(String name, List<String> defaultValue) {
+		return newOpt(name, String.valueOf(defaultValue));
 	}
-
-	public static Option newListOpt(String name, List<String> defaultValue) {
-		return new ListOption(name, defaultValue);
-	}
-
 	// public static Option newMultiStrOpt(String name, List<String>
 	// defaultValue) {
 	// return null;
