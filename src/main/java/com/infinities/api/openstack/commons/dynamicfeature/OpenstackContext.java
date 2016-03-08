@@ -13,17 +13,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
-package com.infinities.api.openstack.commons.middleware;
+package com.infinities.api.openstack.commons.dynamicfeature;
 
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.ContainerResponseFilter;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public abstract class Middleware implements ContainerRequestFilter, ContainerResponseFilter {
-
-	public final static int COMPUTE_REQID = 1002;
-	public final static int REQUEST_BODY_SIZE = 1003;
-	public final static int AUTH_TOKEN = 1004;
-	public final static int AUTH = 1005;
-	public final static int CHECK_PROJECTID = 1006;
+/**
+ * @author pohsun
+ *
+ */
+@Target({ ElementType.TYPE, ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface OpenstackContext {
 
 }

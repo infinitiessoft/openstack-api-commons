@@ -54,12 +54,15 @@ public class AuthStrategyBindingFeature implements DynamicFeature {
 
 	@Override
 	public void configure(ResourceInfo resourceInfo, FeatureContext context) {
-		String strategy = config.getOpt("auth_strategy").asText();
-		if ("noauth".equals(strategy)) {
-			context.register(NoAuthMiddleware.class);
-		} else if ("keystone".equals(strategy)) {
-			context.register(AuthTokenMiddleware.class);
-			context.register(KeystoneContextMiddleware.class);
+		if (resourceInfo.getResourceClass().isAnnotationPresent(OpenstackContext.class)
+				|| resourceInfo.getResourceMethod().isAnnotationPresent(OpenstackContext.class)) {
+			String strategy = config.getOpt("auth_strategy").asText();
+			if ("noauth".equals(strategy)) {
+				context.register(NoAuthMiddleware.class);
+			} else if ("keystone".equals(strategy)) {
+				context.register(AuthTokenMiddleware.class);
+				context.register(KeystoneContextMiddleware.class);
+			}
 		}
 	}
 

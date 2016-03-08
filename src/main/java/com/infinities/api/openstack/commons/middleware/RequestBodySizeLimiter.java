@@ -20,6 +20,7 @@ import java.io.IOException;
 import javax.annotation.Priority;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import com.infinities.api.openstack.commons.config.Config;
 
 @Component
 @Priority(1003)
+@PreMatching
 public class RequestBodySizeLimiter extends Middleware {
 
 	private final int maxRequestSize;
